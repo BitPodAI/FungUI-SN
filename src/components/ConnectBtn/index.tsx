@@ -63,8 +63,8 @@ const ConnectBtn = () => {
         });
         console.log(wallet);
         console.log(connectorData);
-        /*setAddress(wallet.address);
-        console.log(wallet.address);
+        setAddress("");
+        /*console.log(wallet.address);
         const latestUserProfile = useUserStore.getState().userProfile;
         if (latestUserProfile) {
           authService.updateProfile(latestUserProfile.userId, {
@@ -91,7 +91,7 @@ const ConnectBtn = () => {
     e.preventDefault();
     try {
       wallet?.disconnect?.();
-      //WalletAccount.disconnect();
+      //disconnect();
       setWallet(null);
     } catch (error) {
       console.error('Failed to disconnect wallet:', error);
