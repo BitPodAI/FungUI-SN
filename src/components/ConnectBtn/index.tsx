@@ -63,16 +63,16 @@ const ConnectBtn = () => {
         });
         console.log(wallet);
         console.log(connectorData);
-        setAddress("");
-        /*console.log(wallet.address);
+        setAddress(connectorData.account);
+        console.log(connectorData.address);
         const latestUserProfile = useUserStore.getState().userProfile;
         if (latestUserProfile) {
           authService.updateProfile(latestUserProfile.userId, {
             ...latestUserProfile,
             walletChainType: 'starknet',
-            walletAddress: wallet.address,
+            walletAddress: connectorData.address,
           });
-        }*/
+        }
       } else {
         setIsModalOpen(true);
       }
@@ -90,8 +90,9 @@ const ConnectBtn = () => {
   const disconnectWallet = async (e: React.MouseEvent) => {
     e.preventDefault();
     try {
-      wallet?.disconnect?.();
-      //disconnect();
+      //wallet?.disconnect?.();
+      disconnect();
+      setAddress('');
       setWallet(null);
     } catch (error) {
       console.error('Failed to disconnect wallet:', error);
