@@ -13,8 +13,8 @@ import { authService } from '@/services/auth';
 import { connect, disconnect } from "starknetkit"
 import { WebWalletConnector } from "starknetkit/webwallet"
 
-const myFrontendProviderUrl = 'https://free-rpc.nethermind.io/sepolia-juno/v0_7';
-const provider = new StarknetProvider({ baseUrl: myFrontendProviderUrl });
+//const myFrontendProviderUrl = 'https://free-rpc.nethermind.io/sepolia-juno/v0_7';
+//const provider = new StarknetProvider({ baseUrl: myFrontendProviderUrl });
 
 const HOST_URL = import.meta.env.VITE_API_HOST_URL;
 
@@ -63,7 +63,7 @@ const ConnectBtn = () => {
         });
         console.log(wallet);
         console.log(connectorData);
-        setAddress(wallet.address);
+        /*setAddress(wallet.address);
         console.log(wallet.address);
         const latestUserProfile = useUserStore.getState().userProfile;
         if (latestUserProfile) {
@@ -72,7 +72,7 @@ const ConnectBtn = () => {
             walletChainType: 'starknet',
             walletAddress: wallet.address,
           });
-        }
+        }*/
       } else {
         setIsModalOpen(true);
       }
