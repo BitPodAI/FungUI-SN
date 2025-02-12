@@ -1,0 +1,200 @@
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('@/assets/fonts/Press Start 2P.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geologica';
+  src: url('@/assets/fonts/Geologica-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GeologicaRegular';
+  src: url('@/assets/fonts/Geologica-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'InknutAntiquaRegular';
+  src: url('@/assets/fonts/InknutAntiqua-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gantari';
+  src: url('@/assets/fonts/Gantari.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Tiny5';
+  src: url('@/assets/fonts/Tiny5.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Averia Serif Libre';
+  src: url('@/assets/fonts/AveriaSerifLibre-Regular-7.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 像素字体 */
+.press-start-2p {
+  font-family: 'Press Start 2P';
+}
+
+.Geologica {
+  font-family: 'Geologica';
+}
+.GeologicaRegular {
+  font-family: 'GeologicaRegular';
+}
+.Tiny5 {
+  font-family: 'Tiny5';
+}
+.Gantari {
+  font-family: 'Gantari';
+}
+
+.InknutAntiquaRegular {
+  font-family: 'InknutAntiquaRegular';
+}
+
+:root {
+  --window-width: 100vw;
+  font-family: 'Press Start 2P', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  background-color: transparent;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+body {
+  margin: 0;
+  /* min-width: 450px; */
+}
+
+a {
+  @apply text-blue-500 decoration-none;
+}
+
+a:hover {
+  @apply text-blue-600 decoration-none;
+}
+
+button {
+  @apply bg-transparent;
+  @apply border-none;
+  @apply outline-none;
+  @apply cursor-pointer;
+  font-family: 'Press Start 2P', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+button:hover {
+  @apply border-none;
+  @apply outline-none;
+  @apply cursor-pointer;
+}
+
+button:focus,
+button:focus-visible {
+  @apply outline-none;
+  @apply border-none;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+}
+
+input {
+  border: none;
+  outline: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: white;
+  border: 2px solid #ccc;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type='checkbox']:checked {
+  background-color: #2cc83e;
+  border-color: #2cc83e;
+  color: #f0f3f4;
+  background-image: url('../src/assets/icons/tick.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px 12px;
+}
+
+/* input[type='checkbox']:checked::after {
+  content: '✔';
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+input[type='checkbox']:hover {
+  border-color: #2cc83e;
+}
+
+textarea {
+  border: none;
+  outline: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #000000;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    @apply text-blue-400;
+  }
+
+  button {
+    @apply bg-gray-100;
+  }
+}
