@@ -63,15 +63,17 @@ const ConnectBtn = () => {
         });
         console.log(wallet);
         console.log(connectorData);
-        setAddress(connectorData.account);
-        console.log(connectorData.address);
-        const latestUserProfile = useUserStore.getState().userProfile;
-        if (latestUserProfile) {
-          authService.updateProfile(latestUserProfile.userId, {
-            ...latestUserProfile,
-            walletChainType: 'starknet',
-            walletAddress: connectorData.address,
-          });
+        if (connectorData) {
+          setAddress(connectorData.account || "");
+          console.log(connectorData.account);
+          const latestUserProfile = useUserStore.getState().userProfile;
+          if (latestUserProfile) {
+            authService.updateProfile(latestUserProfile.userId, {
+              ...latestUserProfile,
+              walletChainType: 'starknet',
+              walletAddress: connectorData.account,
+            });
+          }
         }
       } else {
         setIsModalOpen(true);
