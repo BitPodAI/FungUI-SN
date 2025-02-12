@@ -9,9 +9,10 @@ import { isWeb } from '@/utils/config';
 import './index.less';
 import { authService } from '@/services/auth';
 import { connect } from '@starknet-io/get-starknet'; // v4.0.3 min
-import { WalletAccount } from 'starknet'; // v6.18.0 min
+import { StarknetProvider, WalletAccount } from 'starknet'; // v6.18.0 min
 
 const myFrontendProviderUrl = 'https://free-rpc.nethermind.io/sepolia-juno/v0_7';
+const provider = new StarknetProvider({ baseUrl: myFrontendProviderUrl });
 
 const HOST_URL = import.meta.env.VITE_API_HOST_URL;
 
@@ -53,7 +54,7 @@ const ConnectBtn = () => {
         //connectWallet();
         const selectedWalletSWO = await connect({ modalMode: 'alwaysAsk', modalTheme: 'light' });
         const myWalletAccount = await WalletAccount.connect(
-          { nodeUrl: myFrontendProviderUrl },
+          provider,
           selectedWalletSWO
         );
         setAddress(myWalletAccount.address);
@@ -83,8 +84,8 @@ const ConnectBtn = () => {
   const disconnectWallet = async (e: React.MouseEvent) => {
     e.preventDefault();
     try {
-      //wallet?.disconnect?.();
-      WalletAccount.disconnect();
+      wallet?.disconnect?.();
+      //WalletAccount.disconnect();
       setWallet(null);
     } catch (error) {
       console.error('Failed to disconnect wallet:', error);
