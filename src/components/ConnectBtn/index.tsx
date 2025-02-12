@@ -8,8 +8,10 @@ import walletIcon from '@/assets/icons/wallet.svg';
 import { isWeb } from '@/utils/config';
 import './index.less';
 import { authService } from '@/services/auth';
-import { connect } from '@starknet-io/get-starknet'; // v4.0.3 min
-import { StarknetProvider, WalletAccount } from 'starknet'; // v6.18.0 min
+//import { connect } from '@starknet-io/get-starknet'; // v4.0.3 min
+//import { StarknetProvider, WalletAccount } from 'starknet'; // v6.18.0 min
+import { connect, disconnect } from "starknetkit"
+import { WebWalletConnector } from "starknetkit/webwallet"
 
 const myFrontendProviderUrl = 'https://free-rpc.nethermind.io/sepolia-juno/v0_7';
 const provider = new StarknetProvider({ baseUrl: myFrontendProviderUrl });
@@ -52,19 +54,23 @@ const ConnectBtn = () => {
     if (isWeb()) {
       if (userProfile?.userId) {
         //connectWallet();
-        const selectedWalletSWO = await connect({ modalMode: 'alwaysAsk', modalTheme: 'light' });
-        const myWalletAccount = await WalletAccount.connect(
-          provider,
-          selectedWalletSWO
-        );
-        setAddress(myWalletAccount.address);
-        console.log(myWalletAccount.address);
+        const { wallet, connectorData } = await connect({
+          connectors: [
+            new WebWalletConnector({
+              url: "https://web.argent.xyz",
+            }),
+          ],
+        });
+        console.log(wallet);
+        console.log(connectorData);
+        setAddress(wallet.address);
+        console.log(wallet.address);
         const latestUserProfile = useUserStore.getState().userProfile;
         if (latestUserProfile) {
           authService.updateProfile(latestUserProfile.userId, {
             ...latestUserProfile,
             walletChainType: 'starknet',
-            walletAddress: myWalletAccount.address,
+            walletAddress: wallet.address,
           });
         }
       } else {
